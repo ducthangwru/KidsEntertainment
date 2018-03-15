@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "367593556568",
+    "firebase_url": "https://testttttttttt-3b866.firebaseio.com",
+    "project_id": "testttttttttt-3b866",
+    "storage_bucket": "testttttttttt-3b866.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367593556568:android:15e8adfd852dcf14",
+        "android_client_info": {
+          "package_name": "kidsentertainment.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367593556568-fnjhkb7803t9gv23aqo70c4v8squ0hvn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ2yQmYZ7QzUAiJXI_5YgX3YKpLm-dUh8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
