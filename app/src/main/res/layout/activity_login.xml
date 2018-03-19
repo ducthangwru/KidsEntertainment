@@ -30,7 +30,7 @@
                 <ImageView
                     android:id="@+id/iv_logo"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="40dp"
                     android:src="@drawable/splash" />
@@ -59,18 +59,6 @@
                             android:src="@drawable/nha" />
 
                     </RelativeLayout>
-                    <EditText
-                        android:textColorHint="@color/gray"
-                        android:id="@+id/idct"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="2"
-                        android:background="#0000"
-                        android:hint="Mã công ty"
-                        android:singleLine="true"
-                        android:textColor="#000000"
-                        android:textCursorDrawable="@null" />
 
 
                 </LinearLayout>
@@ -99,7 +87,7 @@
                     </RelativeLayout>
 
                     <EditText
-                        android:textColorHint="@color/gray"
+                        android:textColorHint="@color/black"
                         android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -144,7 +132,7 @@
                         android:padding="10dp">
 
                         <EditText
-                            android:textColorHint="@color/gray"
+                            android:textColorHint="@color/black"
                             android:id="@+id/password"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -180,7 +168,7 @@
                     android:layout_margin="16dp"
                     android:button="@drawable/custom_tickbox"
                     android:text="Ghi nhớ đăng nhập"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/black" />
 
                 <Button
                     android:id="@+id/btnLogin"

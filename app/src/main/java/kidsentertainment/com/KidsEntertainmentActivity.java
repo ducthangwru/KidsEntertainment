@@ -79,7 +79,7 @@ public class KidsEntertainmentActivity extends AppCompatActivity implements View
                         }
                     });
         } else if (view.getId() == R.id.bechuphinh) {
-
+            startActivity(new Intent(KidsEntertainmentActivity.this,QRCodeActivity.class));
         } else if (view.getId() == R.id.doimatkhau) {
 
         }
