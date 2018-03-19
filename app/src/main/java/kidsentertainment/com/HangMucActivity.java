@@ -57,6 +57,7 @@ public class HangMucActivity extends AppCompatActivity {
     private ListView listHangMuc;
     private TextView tvTitle;
     private ImageButton backBtn;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +149,8 @@ public class HangMucActivity extends AppCompatActivity {
             holder.ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    dialog = ProgressDialog.show(HangMucActivity.this, "", "Đang tải...", true, false);
+
                     Service service = NetContext.getInstance().create(Service.class);
                     String listVideoUrl = "categoryDetail?idlogin=" + DbContext.getInstance().getLoginResponse().getData().get_id()
                             + "&idcategory=" + DbContext.getInstance().getTitleResponse().getData().get(position).get_id();
@@ -155,6 +158,11 @@ public class HangMucActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<ListVideoResponse> call, Response<ListVideoResponse> response) {
                             ListVideoResponse listVideoResponse = response.body();
+                            try {
+                                dialog.cancel();
+                            }catch (Exception e){
+
+                            }
                             if (listVideoResponse.isStatus()) {
                                 DbContext.getInstance().setListVideoResponse(listVideoResponse);
                                 startActivity(new Intent(HangMucActivity.this, YoutubeVideoActivity.class));
@@ -166,6 +174,11 @@ public class HangMucActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<ListVideoResponse> call, Throwable t) {
 
+                            try {
+                                dialog.cancel();
+                            }catch (Exception e){
+
+                            }
                             Toast.makeText(HangMucActivity.this, "Không có kết nối mạng , vui lòng bật 3g hoặc wifi", Toast.LENGTH_SHORT).show();
                         }
                     });

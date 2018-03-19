@@ -1,6 +1,7 @@
 package kidsentertainment.com;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,6 +40,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     EditText etUserName;
     EditText etPassWord;
     Button loginBtn;
+    private ProgressDialog dialogLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     }
 
     private void loginAct() {
+        dialogLogin = ProgressDialog.show(LoginActivity.this, "", "Đăng nhập...", true, false);
         getSharedPreferences(DBPREFS,MODE_PRIVATE).edit().putString("username",etUserName.getText().toString()).commit();
         getSharedPreferences(DBPREFS,MODE_PRIVATE).edit().putString("password",etPassWord.getText().toString()).commit();
         LoginModel loginModel = new LoginModel(etUserName.getText().toString(),etPassWord.getText().toString());
@@ -85,7 +88,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 Log.d(TAG, "onResponse: "+response.body());
                 LoginResponse loginResponse = response.body();
+                try {
+                dialogLogin.cancel();
+                }catch (Exception e){
 
+                }
                 if (loginResponse.isStatus()) {
                     DbContext.getInstance().setLoginResponse(loginResponse);
                     startActivity(new Intent(LoginActivity.this,KidsEntertainmentActivity.class));
@@ -97,6 +104,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
+                try {
+                    dialogLogin.cancel();
+                }catch (Exception e){
+
+                }
                 Toast.makeText(LoginActivity.this,"Không có kết nối mạng , vui lòng bật 3g hoặc wifi",Toast.LENGTH_SHORT).show();
             }
         });

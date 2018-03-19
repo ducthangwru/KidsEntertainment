@@ -1,5 +1,6 @@
 package kidsentertainment.com;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import retrofit2.Response;
 public class KidsEntertainmentActivity extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout ll1, ll2, ll3, ll4;
     private String TAG="KidsEntertainment";
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,8 @@ public class KidsEntertainmentActivity extends AppCompatActivity implements View
         if (view.getId() == R.id.bangchucai) {
 
         } else if (view.getId() == R.id.giaitrichotre) {
+            dialog = ProgressDialog.show(KidsEntertainmentActivity.this, "", "Đang tải..", true, false);
+
             Service service = NetContext.getInstance().create(Service.class);
             String hangMucUrl="category?idlogin="+DbContext.getInstance().getLoginResponse().getData().get_id()
                     +"&idmenu="+DbContext.getInstance().getLoginResponse().getMenus().get(2).get_id();
@@ -63,6 +67,11 @@ public class KidsEntertainmentActivity extends AppCompatActivity implements View
                         @Override
                         public void onResponse(Call<TitleResponse> call, Response<TitleResponse> response) {
                             Log.d(TAG, "onResponse: "+response.body());
+                            try{
+                                dialog.cancel();
+                            }catch (Exception e){
+
+                            }
                             TitleResponse titleResponse = response.body();
                             if (titleResponse.isStatus() ){
                                 DbContext.getInstance().setTitleResponse(titleResponse);
@@ -70,10 +79,16 @@ public class KidsEntertainmentActivity extends AppCompatActivity implements View
                             }else {
                                 Toast.makeText(KidsEntertainmentActivity.this,titleResponse.getMsg(),Toast.LENGTH_SHORT).show();
                             }
+
                         }
 
                         @Override
                         public void onFailure(Call<TitleResponse> call, Throwable t) {
+                            try{
+                                dialog.cancel();
+                            }catch (Exception e){
+
+                            }
                             Toast.makeText(KidsEntertainmentActivity.this,"Không có kết nối mạng , vui lòng bật 3g hoặc wifi",Toast.LENGTH_SHORT).show();
 
                         }
