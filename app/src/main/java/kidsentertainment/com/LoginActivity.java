@@ -34,9 +34,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     private String TAG="LoginActivity";
     private String DBPREFS="Database";
-    private EasyVideoPlayer player;
-    private static final String TEST_URL = "https://www.youtube.com/watch?v=J_nw9vsVZ8k";
-    private YouTubePlayerView youTubePlayerView;
     EditText etUserName;
     EditText etPassWord;
     Button loginBtn;

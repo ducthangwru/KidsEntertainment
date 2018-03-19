@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -74,7 +76,7 @@ public class KidsEntertainmentActivity extends AppCompatActivity implements View
                         }
                     });
         } else if (view.getId() == R.id.bechuphinh) {
-
+            startActivity(new Intent(KidsEntertainmentActivity.this,QRCodeActivity.class));
         } else if (view.getId() == R.id.doimatkhau) {
 
         }

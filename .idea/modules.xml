@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/KidsEntertainment2.iml" filepath="$PROJECT_DIR$/KidsEntertainment2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AppKidsEntertainment.iml" filepath="$PROJECT_DIR$/AppKidsEntertainment.iml" />
+      <module fileurl="file://D:\AndroidStudio\AppKidsEntertainment\KidsEntertainment2.iml" filepath="D:\AndroidStudio\AppKidsEntertainment\KidsEntertainment2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\AndroidStudio\AppKidsEntertainment\app\app.iml" filepath="D:\AndroidStudio\AppKidsEntertainment\app\app.iml" />
     </modules>
   </component>
 </project>

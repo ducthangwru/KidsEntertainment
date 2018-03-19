@@ -26,8 +26,13 @@ import android.widget.SectionIndexer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import org.w3c.dom.Text;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -74,6 +79,7 @@ public class HangMucActivity extends AppCompatActivity {
     }
 
     public class HangMucAdapter extends BaseAdapter {
+        private static final String TAG = "HangMucAdapter";
         private Context context = null;
 
         private class ViewHolder {
@@ -129,14 +135,9 @@ public class HangMucActivity extends AppCompatActivity {
                 holder = new ViewHolder(view);
                 view.setTag(holder);
             }
-            Uri imageUri = Uri.parse(DbContext.getInstance().getTitleResponse().getData().get(position).getImage());
-//            Bitmap myImg = BitmapFactory.decodeFile(imageUri.getPath());
-//            Matrix matrix = new Matrix();
-//            matrix.postRotate(90);
-//            Bitmap rotated = Bitmap.createBitmap(myImg, 0, 0, myImg.getWidth(), myImg.getHeight(),
-//                    matrix, true);
 
-//            holder.img_hangmuc.setImageBitmap(rotated);
+            Picasso.get().load(DbContext.getInstance().getTitleResponse().getData().get(position).getImage()).into(holder.img_hangmuc);
+
             holder.tv_hangmuc.setText(DbContext.getInstance().getTitleResponse().getData().get(position).getName());
             holder.des_hangmuc.setText(DbContext.getInstance().getTitleResponse().getData().get(position).getName());
             holder.ll.setOnClickListener(new View.OnClickListener() {
