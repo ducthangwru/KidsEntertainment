@@ -35,16 +35,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".VideoActivity"
-            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize" />
-        <activity
             android:name=".YoutubeVideoActivity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".KidsEntertainmentActivity"
-            android:theme="@style/Theme.AppCompat.Light" />
-        <activity android:name=".HangMucActivity" />
-        <activity android:name=".ListVideoActivity"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".HangMucActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".ListVideoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

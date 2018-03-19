@@ -17,6 +17,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -54,6 +56,9 @@ public class YoutubeVideoActivity extends AppCompatActivity   {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_youtube_video);
         mInflater = getLayoutInflater();
         youTubePlayerView= (YouTubePlayerView) findViewById(R.id.youtube_player_view);
@@ -66,8 +71,14 @@ public class YoutubeVideoActivity extends AppCompatActivity   {
                 @Override
                 public void onReady() {
                     YoutubeVideoActivity.this.initializedYouTubePlayer = initializedYouTubePlayer;
-                    String videoId = DbContext.getInstance().getListVideoResponse().getData().get(0).getLink();
-                    initializedYouTubePlayer.loadVideo(videoId, 0);
+                    try {
+                        if (DbContext.getInstance().getListVideoResponse().getData().size() != 0) {
+                            String videoId = DbContext.getInstance().getListVideoResponse().getData().get(0).getLink();
+                            initializedYouTubePlayer.loadVideo(videoId, 0);
+                        }
+                    }catch (Exception e){
+                        Toast.makeText(YoutubeVideoActivity.this,"Có lỗi khi tải video hoặc danh sách video rỗng !!!",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 
@@ -169,7 +180,7 @@ public class YoutubeVideoActivity extends AppCompatActivity   {
      */
     public class ListVideoAdapter extends BaseAdapter {
         private Context context = null;
-
+        public int positionChoose=0;
         private class ViewHolder {
             public TextView tvNameVideo;
 
@@ -218,17 +229,21 @@ public class YoutubeVideoActivity extends AppCompatActivity   {
                 view.setTag(holder);
             }
             holder.tvNameVideo.setText(DbContext.getInstance().getListVideoResponse().getData().get(position).getDescription());
-            holder.tvNameVideo.setTextColor(Color.BLACK);
+           if (position==positionChoose) holder.tvNameVideo.setTextColor(Color.RED);
+            else holder.tvNameVideo.setTextColor(Color.BLACK);
             ViewHolder finalHolder = holder;
             holder.tvNameVideo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    finalHolder.tvNameVideo.setTextColor(Color.RED);
-                    initializedYouTubePlayer.loadVideo(DbContext.getInstance().getListVideoResponse().getData().get(position).getLink(), 0);
+                   positionChoose=position;
+                    if(initializedYouTubePlayer!=null) {
+                        initializedYouTubePlayer.loadVideo(DbContext.getInstance().getListVideoResponse().getData().get(position).getLink(), 0);
+                        ListVideoAdapter.this.notifyDataSetChanged();
+                    }
                 }
             });
 
-            this.notifyDataSetChanged();
+
             return view;
         }
 
