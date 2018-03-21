@@ -4,20 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kidsentertainment.com.QRCodeActivity">
+    tools:context="kidsentertainment.com.BangChuCaiActivity">
 
-    <TextView
-        android:id="@+id/text_QR"
+    <ImageView
+        android:id="@+id/image_QR"
         android:scaleType="fitCenter"
-        android:textColor="#000000"
-        android:gravity="center"
-        android:textSize="30sp"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="200dp" />
 
     <me.dm7.barcodescanner.zxing.ZXingScannerView
-        android:id="@+id/qrView"
-        android:layout_below="@id/text_QR"
+        android:id="@+id/qrView_ChuCai"
+        android:layout_below="@id/image_QR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </RelativeLayout>

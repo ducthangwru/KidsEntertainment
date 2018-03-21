@@ -55,7 +55,8 @@ public class KidsEntertainmentActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.bangchucai) {
-
+            startActivity(new Intent(KidsEntertainmentActivity.this,BangChuCaiActivity.class));
+        } else if (view.getId() == R.id.doimatkhau) {
         } else if (view.getId() == R.id.giaitrichotre) {
             dialog = ProgressDialog.show(KidsEntertainmentActivity.this, "", "Đang tải..", true, false);
 

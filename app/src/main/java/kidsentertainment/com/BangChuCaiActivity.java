@@ -4,31 +4,32 @@ import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
 
 import kidsentertainment.com.objects.ResultQRCodeObject;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class QRCodeActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler,
+public class BangChuCaiActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler,
         TextToSpeech.OnInitListener{
 
     private ZXingScannerView zXingScannerView;
     private Gson gson = new Gson();
     private TextToSpeech tts;
     private CustomDialogClass cdd;
-    private TextView textQR;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qrcode);
-        zXingScannerView = findViewById(R.id.qrView);
-        textQR = findViewById(R.id.text_QR);
+        setContentView(R.layout.activity_bang_chu_cai);
+        zXingScannerView = findViewById(R.id.qrView_ChuCai);
+        imageView = findViewById(R.id.image_QR);
         tts = new TextToSpeech(this, this);
         tts.setLanguage(Locale.ENGLISH);
         tts.setSpeechRate((float) 0.9);
@@ -50,13 +51,14 @@ public class QRCodeActivity extends AppCompatActivity implements ZXingScannerVie
     public void handleResult(com.google.zxing.Result result) {
         try
         {
-
-            if(result.getText() != null)
+            ResultQRCodeObject obj = gson.fromJson(result.getText(), ResultQRCodeObject.class);
+//            cdd = CustomDialogClass.getInstance(QRCodeActivity.this, obj.url);
+//            cdd.show();
+            if(obj.text != null)
             {
-               // Picasso.get().load(obj.url).into(image_QR);
-                textQR.setText(result.getText() );
-                Toast.makeText(getApplicationContext(),result.getText() , Toast.LENGTH_SHORT).show();
-                tts.speak(result.getText() , TextToSpeech.QUEUE_FLUSH, null);
+                Picasso.get().load(obj.url).into(imageView);
+                Toast.makeText(getApplicationContext(),obj.text, Toast.LENGTH_SHORT).show();
+                tts.speak(obj.text, TextToSpeech.QUEUE_FLUSH, null);
             }
             else
             {
