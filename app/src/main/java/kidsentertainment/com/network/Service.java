@@ -5,6 +5,7 @@ package kidsentertainment.com.network;
 
 import kidsentertainment.com.network.models.ListVideoResponse;
 import kidsentertainment.com.network.models.LoginResponse;
+import kidsentertainment.com.network.models.RegisResponse;
 import kidsentertainment.com.network.models.TitleResponse;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -21,6 +22,8 @@ public interface Service {
 
     @POST("user/login")
     Call<LoginResponse> login(@Body RequestBody body);
+    @POST("user")
+    Call<RegisResponse> register(@Body RequestBody body);
     @GET
     Call<TitleResponse> getHangMuc(@Url String url);
     @GET

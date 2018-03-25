@@ -43,7 +43,7 @@ public class KidsEntertainmentActivity extends AppCompatActivity implements View
     private void initView() {
         ll1 = this.findViewById(R.id.bangchucai);
         ll2 = this.findViewById(R.id.giaitrichotre);
-        ll3 = this.findViewById(R.id.bechuphinh);
+        ll3 = this.findViewById(R.id.hoctienganh);
         ll4 = this.findViewById(R.id.doimatkhau);
         ll1.setOnClickListener(this);
         ll2.setOnClickListener(this);

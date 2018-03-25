@@ -220,6 +220,15 @@
                     android:textColor="#ffff" />
 
             </LinearLayout>
+            <TextView
+                android:padding="8dp"
+                android:id="@+id/tv_register"
+                android:textColor="@color/black"
+                android:text=" Đăng ký ngay"
+                android:layout_alignParentBottom="true"
+               android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </RelativeLayout>
 
     </ScrollView>

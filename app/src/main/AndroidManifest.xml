@@ -48,7 +48,9 @@
             android:name=".ListVideoActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".QRCodeActivity" />
-        <activity android:name=".BangChuCaiActivity"></activity>
+        <activity android:name=".BangChuCaiActivity" />
+        <activity android:name=".RegisterActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>
