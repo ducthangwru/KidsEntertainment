@@ -86,9 +86,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     private void loginAct() {
         dialogLogin = ProgressDialog.show(LoginActivity.this, "", "Đăng nhập...", true, false);
-        getSharedPreferences(DBPREFS, MODE_PRIVATE).edit().putString("username", etUserName.getText().toString()).commit();
-        getSharedPreferences(DBPREFS, MODE_PRIVATE).edit().putString("password", etPassWord.getText().toString()).commit();
-        LoginModel loginModel = new LoginModel(etUserName.getText().toString(), etPassWord.getText().toString());
+         LoginModel loginModel = new LoginModel(etUserName.getText().toString(), etPassWord.getText().toString());
         Gson gson = new Gson();
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody requestBody = RequestBody.create(mediaType, gson.toJson(loginModel));
