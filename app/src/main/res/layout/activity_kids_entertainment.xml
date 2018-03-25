@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
-                    android:id="@+id/bechuphinh"
+                    android:id="@+id/hoctienganh"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_margin="16dp"

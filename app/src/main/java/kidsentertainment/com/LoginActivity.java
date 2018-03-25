@@ -59,7 +59,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
         loginBtn = this.findViewById(R.id.btnLogin);
         etUserName = this.findViewById(R.id.username);
-        etPassWord = this.findViewById(R.id.password);
         loginBtn.setOnClickListener(this);
         etUserName.setText(getSharedPreferences(DBPREFS,MODE_PRIVATE).getString("username",""));
         etPassWord.setText(getSharedPreferences(DBPREFS,MODE_PRIVATE).getString("password",""));
