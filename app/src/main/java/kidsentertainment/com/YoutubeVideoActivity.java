@@ -45,7 +45,7 @@ import retrofit2.Response;
 
 public class YoutubeVideoActivity extends AppCompatActivity   {
     private ListView listVideo;
-    private FullScreenManager fullScreenManager;
+    private FullScreenManager fullScreenManager = new FullScreenManager(this);
     private EasyVideoPlayer player;
     private static final String TEST_URL = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
     private String TAG = "VideoActivity";
